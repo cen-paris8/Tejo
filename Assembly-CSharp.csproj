@@ -63,6 +63,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\bouleDeFeu.cs" />
     <Compile Include="Assets\Scripts\dragon.cs" />
+    <Compile Include="Assets\Scripts\wings.cs" />
+    <Compile Include="Assets\Scripts\wingsRight.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/work/Project/unity/Tejo/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
