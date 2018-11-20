@@ -4,96 +4,61 @@ using UnityEngine;
 
 public class dragon : MonoBehaviour {
 
-    public float boundHeightMin = 3.0f;
-    public float boundHeightMax = 7.0f;
-    public float boundRightMin = -2.0f;
-    public float boundRightMax = 7.0f;
-    public float boundLeftMin = -5.0f;
-    public float boundLeftMax = 8.0f;
-    public int countBound = 0;
-    public int countBoundinit = 0;
-    public bool flagStop = true;
+    public float boundLeftMin = 1f;
+    public float boundLeftMax = 8f;
+    public float boundHeightMin = 2.5f;
+    public float boundHeightMax = 7f;
+    public float boundRightMin = -11f;
+    public float boundRightMax = 3f;
+    private bool inGo = false; // le dragon est en chemin à true
+    public float speed = 0.2f;
+    public Vector3 newDestination;
+
+    public Transform colliderFire;
+    private Transform newColliderFire;
 
     // Use this for initialization
     void Start () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetKey(KeyCode.S))
-        {
-            gameObject.GetComponent<Rigidbody>().AddForce(5, 10, -20);
-            flagStop = false;
-            countBound = 0;
-            countBoundinit = 0;
-            print("S 5, 20, -20");
-        }
-        if (countBoundinit >= 10 && countBoundinit < 100 && flagStop == false)
-        {
-            gameObject.GetComponent<Rigidbody>().AddForce(2, 15, 20);
-            print("countBoundinit 2,15,20");
-            countBoundinit = 100;
 
-        }
-        if (countBound % 200 == 0 && flagStop == false)
+    // Update is called once per frame
+    void Update()
+    {
+        if (!inGo)
         {
-            gameObject.GetComponent<Rigidbody>().AddForce(5, 15, -20);
-            countBound++;
-            print("Bong 5, 15 -20");
+            NewDest();
         }
-        if (countBound % 45 == 0 && flagStop == false)
+        else
         {
-            gameObject.GetComponent<Rigidbody>().AddForce(-2, 10, 20);
-            countBound++;
-            print("Bing -2,10,20");
+            if (Vector3.Distance(transform.position, newDestination) > 1.5f)
+            {
+                Vector3 direction = (newDestination - transform.position);
+                direction = direction.normalized;
+                //print("direction  " + direction);
+                transform.position += direction * speed;
+                //print("transform.position  " + transform.position);
+            }
+            else
+            {
+                inGo = false;
+            }
+            //print("distance: "+ Vector3.Distance(transform.position, newDestination));
         }
-        if (countBound > 1000)
+        if (Input.GetKeyDown(KeyCode.D))
         {
-            print("go down");
-            gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-            countBound = 0;
-            countBoundinit = 0;
-            flagStop = true;
+            newColliderFire = Instantiate(colliderFire);
+            Vector3 dragonMouth = new Vector3(1, 2, 0);
+            newColliderFire.position = GetComponent<Transform>().position + dragonMouth;
         }
-        
-        if (transform.position.y <= boundHeightMin && flagStop == false)
-        {
-            gameObject.GetComponent<Rigidbody>().AddForce(0, 20, 0);
-            countBound++;
-            countBoundinit++;
-            print("MinHeight + 20");
-        }
-        
-        if (transform.position.y > boundHeightMax && flagStop == false)
-        {
-            gameObject.GetComponent<Rigidbody>().AddForce(0, -10, 3);
-            print("MaxHeight + -20, 3");
-        }
-        if (transform.position.x <= boundRightMin && flagStop == false)
-        {
-            gameObject.GetComponent<Rigidbody>().AddForce(3, 1, 0);
-            countBound++;
-        }
-        if (transform.position.x > boundRightMax && flagStop == false)
-        {
-            gameObject.GetComponent<Rigidbody>().AddForce(-5, 0, 0);
-            countBound++;
-        }
-        if (transform.position.z <= boundLeftMin && flagStop == false)
-        {
-            // gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            // gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-            gameObject.GetComponent<Rigidbody>().AddForce(0, 5, 20);
-            print("LeftMin + (5, 10");
-        }
-        if (transform.position.z > boundLeftMax && flagStop == false)
-        {
-            gameObject.GetComponent<Rigidbody>().AddForce(0, 5, -20);
-            print("LeftMax + 5, -10");
-        }
-        
-
+    }
+    /// <summary>
+    /// fonction calculant la nouvelle destination
+    /// </summary>
+     void NewDest()
+    {
+        newDestination = new Vector3(Random.Range(boundLeftMin, boundLeftMax), Random.Range(boundHeightMin, boundHeightMax), Random.Range(boundRightMin, boundRightMax));
+        inGo = true;
+        //print("new destination: " + newDestination);
     }
 }
