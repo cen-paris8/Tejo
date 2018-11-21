@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class knight : MonoBehaviour {
 
-    private fireball newFireball;
+    //private fireball newFireball;
+    GameObject currentFireball;
 
     // Use this for initialization
     void Start () {
@@ -17,7 +18,7 @@ public class knight : MonoBehaviour {
         // Moving knight to the left
         if (Input.GetKey(KeyCode.LeftArrow)){
 
-            transform.Translate(0.5f, 0, 0);
+            transform.Translate(0.2f, 0, 0);
 
         }
 
@@ -26,25 +27,25 @@ public class knight : MonoBehaviour {
         if (Input.GetKey(KeyCode.RightArrow))
         {
 
-            transform.Translate(-0.5f, 0, 0);
+            transform.Translate(-0.2f, 0, 0);
 
         }
 
 
         // Moving knight to background
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow) && transform.position.x > 8)
         {
 
-            transform.Translate(0, 0, -0.5f);
+            transform.Translate(0, 0, -0.2f);
 
         }
 
 
         // Moving knight to foreground
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow) && transform.position.x < 11)
         {
 
-            transform.Translate(0, 0, 0.5f);
+            transform.Translate(0, 0, 0.2f);
 
         }
 
@@ -54,7 +55,7 @@ public class knight : MonoBehaviour {
         {
             print("Key J");
             //transform.Translate(0, 0.4f, 0);
-            gameObject.GetComponent<Rigidbody>().AddForce(1f, 10f, 1f);
+            gameObject.GetComponent<Rigidbody>().AddForce(1f, 100f, 1f);
 
         }
 
@@ -62,17 +63,22 @@ public class knight : MonoBehaviour {
 
     void OnCollisionEnter(Collision maCollision)
     {
-        print("maCollision.gameObject.name : " + maCollision.gameObject.name);
-        if (maCollision.gameObject.name == "FireCollider")
+        print("knight maCollision.gameObject.name : " + maCollision.gameObject.name);
+        if (maCollision.gameObject.name == "FireCollider(Clone)")
         {
-            print("Crasshhhhh -----");
+            print("j'y suis ");
             // fireBall explose
-            newFireball = GetComponent<fireball>();
-            newFireball.explose = true;
-            // Knight win score +1
+            gameObject.GetComponent<Rigidbody>().AddForce(-1000, 0, 0);
+            GameObject.Find("FireCollider(Clone)").transform.GetChild(0).GetComponent<fireball>().explose = true;
+            //currentFireball = GameObject.Find("FireCollider(Clone)");
+            //currentFireball.transform.GetChild(0).GetComponent<fireball>().explose = true;
+            // maCollision.transform.GetChild(0).GetComponent<fireball>().explose = true;
+            // at least
+            Destroy(GameObject.Find("FireCollider(Clone)"));
+            Destroy(maCollision.gameObject);
+
 
         }
-        //Destroy(gameObject);
 
     }
 }

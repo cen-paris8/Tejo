@@ -6,6 +6,7 @@ public class score : MonoBehaviour {
 
     public life[] etatScore;
     public int total = 3;
+    public int point;
     private SceneStart gameOver;
 
 
@@ -17,30 +18,10 @@ public class score : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if ( total > 3 )
-        {
-            total = 3;
-        }
-        // Print All Red (Pair)
-        for (var i = 2; i <= 6; i = i +2)
-        {
-            etatScore[i].active = true;
-        }
-        // Impair Green Pair Red
-        if (total > 0)
-        {
-            for (var i = 1; i <= total * 2; i++)
-            {
-                if (i % 2 != 0)
-                {
-                    etatScore[i].active = true;
-                }
-            }
-        } else
-        {
-            gameOver = GetComponent<SceneStart>();
-            gameOver.ChangeScene("gameover");
-            //gameOver.ChangeScene("menu");
-        }
+        total = total + point;
+
+        // To do prog. bar
+        //GameObject.Find("Bar de prog ").GetComponent<Component du Bar de prog>().value = £ de total;
+        
     }
 }

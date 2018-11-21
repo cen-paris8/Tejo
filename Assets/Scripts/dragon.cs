@@ -35,21 +35,20 @@ public class dragon : MonoBehaviour {
             {
                 Vector3 direction = (newDestination - transform.position);
                 direction = direction.normalized;
-                //print("direction  " + direction);
                 transform.position += direction * speed;
-                //print("transform.position  " + transform.position);
             }
             else
             {
                 inGo = false;
             }
-            //print("distance: "+ Vector3.Distance(transform.position, newDestination));
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            newColliderFire = Instantiate(colliderFire);
-            Vector3 dragonMouth = new Vector3(1, 2, 0);
+            newColliderFire = Instantiate(colliderFire); // 
+            Vector3 dragonMouth = new Vector3(0.1f, 2, -1);
             newColliderFire.position = GetComponent<Transform>().position + dragonMouth;
+            newColliderFire.SetParent(transform);
+            newColliderFire.GetComponent<shoot>().manageShoot();
         }
     }
     /// <summary>
@@ -59,6 +58,5 @@ public class dragon : MonoBehaviour {
     {
         newDestination = new Vector3(Random.Range(boundLeftMin, boundLeftMax), Random.Range(boundHeightMin, boundHeightMax), Random.Range(boundRightMin, boundRightMax));
         inGo = true;
-        //print("new destination: " + newDestination);
     }
 }

@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\arms.cs" />
     <Compile Include="Assets\Scripts\castel.cs" />
     <Compile Include="Assets\Scripts\changeCastel.cs" />
     <Compile Include="Assets\Scripts\dragon.cs" />
