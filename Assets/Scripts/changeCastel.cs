@@ -6,16 +6,9 @@ public class changeCastel : MonoBehaviour {
 
     public castel[] etatCastel;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        
-	}
-
+    /// <summary>
+    /// function to change renderer when castel hit
+    /// </summary>
     public void manageCastels()
     {
         for (var i = 0; i < etatCastel.Length; i++)

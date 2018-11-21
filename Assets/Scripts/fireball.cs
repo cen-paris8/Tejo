@@ -18,8 +18,6 @@ public class fireball : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if(explose){
-            print("explose");
-            //var main = myfireball.main;
             AudioSource source = GetComponent<AudioSource>();
             source.Play();
             myfireball.startSpeed = 10;
@@ -30,10 +28,10 @@ public class fireball : MonoBehaviour {
             // castels change
             // GameObject.Find("CastelsCollider").GetComponent<changeCastel>().manageCastels();
 
-            // Do not destroy here because init is done on colliderFire
+            // Destroy Fireball once explosion done
             if (Time.time - startExplosion  > explosionTime){
                 print("destroy");
-                GetComponentInParent<shoot>().destroyFireball(); //destroyFireball
+                GetComponentInParent<shoot>().destroyFireball(); 
             }
 
         }

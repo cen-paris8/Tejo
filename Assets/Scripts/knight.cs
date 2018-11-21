@@ -6,11 +6,6 @@ public class knight : MonoBehaviour {
 
     //private fireball newFireball;
     GameObject currentFireball;
-
-    // Use this for initialization
-    void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -50,7 +45,7 @@ public class knight : MonoBehaviour {
         }
 
 
-        // Jumping : Error
+        // To Jump
         if (Input.GetKey(KeyCode.J)) //RightCommand
         {
             print("Key J");
@@ -63,16 +58,11 @@ public class knight : MonoBehaviour {
 
     void OnCollisionEnter(Collision maCollision)
     {
-        print("knight maCollision.gameObject.name : " + maCollision.gameObject.name);
         if (maCollision.gameObject.name == "FireCollider(Clone)")
         {
-            print("j'y suis ");
             // fireBall explose
             gameObject.GetComponent<Rigidbody>().AddForce(-1000, 0, 0);
             GameObject.Find("FireCollider(Clone)").transform.GetChild(0).GetComponent<fireball>().explose = true;
-            //currentFireball = GameObject.Find("FireCollider(Clone)");
-            //currentFireball.transform.GetChild(0).GetComponent<fireball>().explose = true;
-            // maCollision.transform.GetChild(0).GetComponent<fireball>().explose = true;
             // at least
             Destroy(GameObject.Find("FireCollider(Clone)"));
             Destroy(maCollision.gameObject);

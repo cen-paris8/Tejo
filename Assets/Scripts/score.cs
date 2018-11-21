@@ -6,7 +6,6 @@ public class score : MonoBehaviour {
 
     public life[] etatScore;
     public int total = 3;
-    public int point;
     private SceneStart gameOver;
 
 
@@ -18,10 +17,13 @@ public class score : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        
+    }
+    void calculateScore(int point)
+    {
         total = total + point;
 
         // To do prog. bar
         //GameObject.Find("Bar de prog ").GetComponent<Component du Bar de prog>().value = £ de total;
-        
     }
 }

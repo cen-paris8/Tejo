@@ -12,29 +12,21 @@ public class shoot : MonoBehaviour {
     private score newScore;
     AudioSource source;
     // Use to define fireball direction
-    //public Transform castel;
+    public Transform castel;
     Vector3 castelPosition;
     // Use to define fireball speed
     float speed =  3;// 10; //
     // Use to define level game
-    public int level = 1;
+    private int level = 1;
     float startTime;
     Vector3 sup;
 
 
     // Use this for initialization
     void Start () {
-        //myfireball = GetComponent<ParticleSystem>();	
         startTime = Time.time;
-        //manageShoot();
-
-
     }
 
-    void Update()
-    {
-        
-    }
 
     /// <summary>
     /// function manage shoot direction
@@ -49,22 +41,15 @@ public class shoot : MonoBehaviour {
         // To wait 2s before shoot
         if (Time.time - startTime > 3)
         {
-            // To use with Prefab
-            castelPosition = GameObject.Find("CastelsCollider").transform.position;
             // Define fireball direction
             print("castelPosition : " + castelPosition);
             sup = new Vector3(0, -1, -1);
-            Vector3 direction = (castelPosition - transform.position + sup); // + sup
-            print("transform.position : " + transform.position);
-            print("direction : " + direction);
+            Vector3 direction = (castel.position - transform.position + sup); // + sup
             direction = direction.normalized;
             GetComponent<ConstantForce>().force = direction * speed;
-            print("direction norm: " + direction);
             //transform.position += direction * speed;
             //GetComponent<Rigidbody>().velocity = direction * speed;
             transform.SetParent(null);
-
-
 
         }
 
@@ -79,19 +64,13 @@ public class shoot : MonoBehaviour {
     /// </summary>
     void OnCollisionEnter(Collision maCollision)
     {
-        print("maCollision.gameObject.name : " + maCollision.gameObject.name);
         if (maCollision.gameObject.name == "CastelCollider")
         {
-            print("j'y suis");
             // fireBall explose
-            print(" transform.GetChild(0).GetComponent<fireball>().explose :" + transform.GetChild(0).GetComponent<fireball>().explose);
-            //newFireball = transform.GetChild(0).GetComponent<fireball>();
-            //newFireball.explose = true;
             transform.GetChild(0).GetComponent<fireball>().explose = true;
-            print(" transform.GetChild(0).GetComponent<fireball>().explose :" + transform.GetChild(0).GetComponent<fireball>().explose);
 
             // To Do Score -1
-            // GameObject.Find("Score").GetComponent<score>().point = -1;
+            // GameObject.Find("Score").GetComponent<score>().claculateScore(-1);
 
             // at least
             // Destroy(gameObject);

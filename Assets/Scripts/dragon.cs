@@ -4,23 +4,19 @@ using UnityEngine;
 
 public class dragon : MonoBehaviour {
 
-    public float boundLeftMin = 1f;
-    public float boundLeftMax = 8f;
-    public float boundHeightMin = 2.5f;
-    public float boundHeightMax = 7f;
-    public float boundRightMin = -11f;
-    public float boundRightMax = 3f;
+    private float boundLeftMin = 1f;
+    private float boundLeftMax = 8f;
+    private float boundHeightMin = 2.5f;
+    private float boundHeightMax = 7f;
+    private float boundRightMin = -11f;
+    private float boundRightMax = 3f;
     private bool inGo = false; // le dragon est en chemin à true
-    public float speed = 0.2f;
-    public Vector3 newDestination;
+    private float speed = 0.2f;
+    private Vector3 newDestination;
 
     public Transform colliderFire;
     private Transform newColliderFire;
 
-    // Use this for initialization
-    void Start () {
-		
-	}
 
     // Update is called once per frame
     void Update()
@@ -44,7 +40,7 @@ public class dragon : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            newColliderFire = Instantiate(colliderFire); // 
+            newColliderFire = Instantiate(colliderFire); 
             Vector3 dragonMouth = new Vector3(0.1f, 2, -1);
             newColliderFire.position = GetComponent<Transform>().position + dragonMouth;
             newColliderFire.SetParent(transform);

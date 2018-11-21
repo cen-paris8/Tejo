@@ -843,7 +843,6 @@ MonoBehaviour:
   - {fileID: 888965449}
   - {fileID: 2137634673}
   total: 3
-  point: 0
 --- !u!1 &385591644
 GameObject:
   m_ObjectHideFlags: 0
@@ -8515,14 +8514,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5a6081592b2b14292747ce51bbf2c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundLeftMin: -1
-  boundLeftMax: 1
-  boundHeightMin: 2
-  boundHeightMax: 7
-  boundRightMin: -5
-  boundRightMax: 5
-  speed: 0.2
-  newDestination: {x: 0, y: 0, z: 0}
   colliderFire: {fileID: 2122330115}
 --- !u!136 &1624214149
 CapsuleCollider:
@@ -9707,7 +9698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 734242c43f05a1e45bee67990f04d893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
+  castel: {fileID: 0}
 --- !u!65 &2122330112
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -5,11 +5,6 @@ using UnityEngine;
 public class life : MonoBehaviour {
 
     public bool active = false;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {
