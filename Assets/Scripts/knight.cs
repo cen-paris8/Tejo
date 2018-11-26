@@ -64,8 +64,8 @@ public class knight : MonoBehaviour {
             gameObject.GetComponent<Rigidbody>().AddForce(-1000, 0, 0);
             GameObject.Find("FireCollider(Clone)").transform.GetChild(0).GetComponent<fireball>().explose = true;
             // at least
-            Destroy(GameObject.Find("FireCollider(Clone)"));
-            Destroy(maCollision.gameObject);
+            // Destroy(GameObject.Find("FireCollider(Clone)"));
+            Destroy(maCollision.gameObject, 5);
 
 
         }

@@ -15,16 +15,24 @@ public class shoot : MonoBehaviour {
     public Transform castel;
     Vector3 castelPosition;
     // Use to define fireball speed
-    float speed =  3;// 10; //
+    float speed =  4;// 10; //
     // Use to define level game
     private int level = 1;
     float startTime;
     Vector3 sup;
+    public ConstantForce forceBallDirection;
+    private Transform fireChild;
 
 
     // Use this for initialization
     void Start () {
         startTime = Time.time;
+        fireChild = transform.GetChild(0);
+    }
+
+    // Use this for initialization
+    void Update()
+    {
     }
 
 
@@ -42,22 +50,17 @@ public class shoot : MonoBehaviour {
         if (Time.time - startTime > 3)
         {
             // Define fireball direction
-            print("castelPosition : " + castelPosition);
             sup = new Vector3(0, -1, -1);
-            Vector3 direction = (castel.position - transform.position + sup); // + sup
+            Vector3 direction = (castel.position - transform.position); // + sup
             direction = direction.normalized;
-            GetComponent<ConstantForce>().force = direction * speed;
+            forceBallDirection.force = direction * speed;
             //transform.position += direction * speed;
             //GetComponent<Rigidbody>().velocity = direction * speed;
             transform.SetParent(null);
+            Destroy(gameObject, 10);
 
         }
 
-        // destroy if firewall get out of the scene
-        if (transform.position.x > 15)
-        {
-            Destroy(gameObject);
-        }
     }
     /// <summary>
     /// function manage fireball collision on castel
@@ -66,16 +69,11 @@ public class shoot : MonoBehaviour {
     {
         if (maCollision.gameObject.name == "CastelCollider")
         {
-            // fireBall explose
+            AudioSource source = GetComponent<AudioSource>();
+            source.Play();
             transform.GetChild(0).GetComponent<fireball>().explose = true;
-
             // To Do Score -1
-            // GameObject.Find("Score").GetComponent<score>().claculateScore(-1);
-
-            // at least
-            // Destroy(gameObject);
-            // Destroy(maCollision.gameObject);
-
+            GameObject.Find("Score").GetComponent<score>().calculateScore(-1);
 
         }
         if (maCollision.gameObject.name == "plane")

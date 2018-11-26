@@ -42,7 +42,7 @@ public class dragon : MonoBehaviour {
         {
             newColliderFire = Instantiate(colliderFire); 
             Vector3 dragonMouth = new Vector3(0.1f, 2, -1);
-            newColliderFire.position = GetComponent<Transform>().position + dragonMouth;
+            newColliderFire.position = GetComponent<Transform>().position; //+ dragonMouth
             newColliderFire.SetParent(transform);
             newColliderFire.GetComponent<shoot>().manageShoot();
         }

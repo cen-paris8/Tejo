@@ -824,7 +824,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9a8826a3eeb03954a9ae189bb07034cb, type: 2}
+  - {fileID: 2100000, guid: db2bc39fb657c614692579a11114c14a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

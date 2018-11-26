@@ -7,7 +7,7 @@ public class fireball : MonoBehaviour {
     ParticleSystem myfireball;
     public bool explose = false;
     private bool formerExpose = false;
-    public float explosionTime =1;
+    public float explosionTime = 2;
     private float startExplosion;
 
 	// Use this for initialization
@@ -18,8 +18,8 @@ public class fireball : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if(explose){
-            AudioSource source = GetComponent<AudioSource>();
-            source.Play();
+            // AudioSource source = GetComponent<AudioSource>();
+            //source.Play();
             myfireball.startSpeed = 10;
             if(!formerExpose){
                 startExplosion = Time.time;

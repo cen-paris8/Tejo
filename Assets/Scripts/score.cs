@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class score : MonoBehaviour {
 
-    public life[] etatScore;
+    //public life[] etatScore;
     public int total = 3;
     private SceneStart gameOver;
 
@@ -19,8 +19,9 @@ public class score : MonoBehaviour {
     {
         
     }
-    void calculateScore(int point)
+    public void calculateScore(int point)
     {
+        print("score = -1");
         total = total + point;
 
         // To do prog. bar
