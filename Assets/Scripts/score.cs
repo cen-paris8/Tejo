@@ -19,7 +19,7 @@ public class score : MonoBehaviour {
         // To do prog. bar
         transform.GetChild(0).GetChild(0).GetComponent<Slider>().value = total;
 
-        if ((total % 2) == 0)
+        if ((total % 2) == 0 && point == -1)
         {
             //changeCastel
             castel.GetComponent<changeCastel>().manageCastels();

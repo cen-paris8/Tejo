@@ -13,7 +13,13 @@ public class dragon : MonoBehaviour {
     private bool inGo = false; // le dragon est en chemin à true
     private float speed = 0.2f;
     private Vector3 newDestination;
+    // Fireball init frequency
     private float frequence;
+    // Jsut use to wait 5s before start
+    private int StartTime = 5;
+    // Knight win 
+    private float gameDuring = 70;
+    private float startGame;
 
     public Transform colliderFire;
     private Transform newColliderFire;
@@ -21,10 +27,16 @@ public class dragon : MonoBehaviour {
     private void Start()
     {
         frequence = Time.time;
+        startGame = Time.time;
     }
     // Update is called once per frame
     void Update()
     {
+        if (Time.time - startGame > gameDuring)
+        {
+            // Go To Victory Scene
+            GameObject.Find("Main Camera").GetComponent<SceneStart>().ChangeScene("victory");
+        }
         if (!inGo)
         {
             NewDest();
@@ -42,7 +54,7 @@ public class dragon : MonoBehaviour {
                 inGo = false;
             }
         }
-        if (Time.time - frequence > 0)
+        if (Time.time - frequence > StartTime)
         {
             newColliderFire = Instantiate(colliderFire);
             Vector3 dragonMouth = new Vector3(0.1f, 2, -1);
@@ -51,6 +63,7 @@ public class dragon : MonoBehaviour {
             newColliderFire.GetComponent<shoot>().manageShoot();
             float m = Random.Range(2, 6);
             frequence = Time.time + m;
+            StartTime = 0;
         }
             
     }

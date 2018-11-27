@@ -1835,8 +1835,8 @@ GameObject:
   - component: {fileID: 1169975755}
   - component: {fileID: 1169975754}
   - component: {fileID: 1169975753}
-  - component: {fileID: 1169975757}
   - component: {fileID: 1169975756}
+  - component: {fileID: 1169975757}
   m_Layer: 0
   m_Name: fire
   m_TagString: Untagged
@@ -6548,13 +6548,13 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1169975752}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff4f97e360f8e3840bff2b6f059f62fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   explose: 0
-  explosionTime: 1
+  explosionTime: 0
 --- !u!1 &1197273545
 GameObject:
   m_ObjectHideFlags: 0
@@ -7448,13 +7448,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1757729195}
-  m_LocalRotation: {x: 0.50846547, y: 0.5608772, z: -0.46811923, w: 0.4557896}
-  m_LocalPosition: {x: 0.083877236, y: 0.9275283, z: -0.4626436}
+  m_LocalRotation: {x: 0.5311539, y: 0.5828864, z: -0.44220832, w: 0.4272831}
+  m_LocalPosition: {x: 0.09, y: 0.926, z: -0.45}
   m_LocalScale: {x: 0.7605127, y: 8.377513, z: 0.38854375}
   m_Children: []
   m_Father: {fileID: 2023012404}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 98.65198, y: -103.548004, z: -107.269}
+  m_LocalEulerAnglesHint: {x: 104.20599, y: -6.63501, z: -100.48401}
 --- !u!114 &1757729200
 MonoBehaviour:
   m_ObjectHideFlags: 0

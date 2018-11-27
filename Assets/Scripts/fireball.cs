@@ -7,7 +7,7 @@ public class fireball : MonoBehaviour {
     ParticleSystem myfireball;
     public bool explose = false;
     private bool formerExpose = false;
-    public float explosionTime = 2;
+    public float explosionTime = 0;
     private float startExplosion;
 
 	// Use this for initialization

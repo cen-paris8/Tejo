@@ -69,20 +69,21 @@ public class shoot : MonoBehaviour {
         {
             AudioSource source = GetComponent<AudioSource>();
             source.Play();
+            transform.GetChild(0).GetComponent<fireball>().explosionTime = 2;
             transform.GetChild(0).GetComponent<fireball>().explose = true;
             // To Do Score -1
             GameObject.Find("Score").GetComponent<score>().calculateScore(-1);
 
         }
-        if (maCollision.gameObject.name == "armCollider")
+        if (maCollision.gameObject.name == "Knights")
         {
             print("touché arm");
-            transform.position = maCollision.transform.position;
+            // transform.position = maCollision.transform.position;
             GetComponent<Rigidbody>().velocity = Vector3.zero;
-
+            transform.GetChild(0).GetComponent<fireball>().explosionTime = 0.5f;
             transform.GetChild(0).GetComponent<fireball>().explose = true;
             // To Do Score +1
-            GameObject.Find("Score").GetComponent<score>().calculateScore(1);
+            // GameObject.Find("Score").GetComponent<score>().calculateScore(1);
 
         }
         if (maCollision.gameObject.name == "plane")
