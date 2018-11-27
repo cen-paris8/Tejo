@@ -30,7 +30,6 @@ public class fireball : MonoBehaviour {
 
             // Destroy Fireball once explosion done
             if (Time.time - startExplosion  > explosionTime){
-                print("destroy");
                 GetComponentInParent<shoot>().destroyFireball(); 
             }
 

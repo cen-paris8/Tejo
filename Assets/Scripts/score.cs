@@ -1,30 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class score : MonoBehaviour {
 
     //public life[] etatScore;
-    public int total = 3;
+    public int total;
     private SceneStart gameOver;
+    public Transform castel;
 
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void calculateScore(int point)
     {
-        print("score = -1");
-        total = total + point;
-
+        
+        total = (int) transform.GetChild(0).GetChild(0).GetComponent<Slider>().value + point;
+        print("score " + total);
         // To do prog. bar
-        //GameObject.Find("Bar de prog ").GetComponent<Component du Bar de prog>().value = £ de total;
+        transform.GetChild(0).GetChild(0).GetComponent<Slider>().value = total;
+
+        if ((total % 2) == 0)
+        {
+            //changeCastel
+            castel.GetComponent<changeCastel>().manageCastels();
+        }
     }
 }

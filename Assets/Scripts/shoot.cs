@@ -16,8 +16,6 @@ public class shoot : MonoBehaviour {
     Vector3 castelPosition;
     // Use to define fireball speed
     float speed =  4;// 10; //
-    // Use to define level game
-    private int level = 1;
     float startTime;
     Vector3 sup;
     public ConstantForce forceBallDirection;
@@ -74,6 +72,17 @@ public class shoot : MonoBehaviour {
             transform.GetChild(0).GetComponent<fireball>().explose = true;
             // To Do Score -1
             GameObject.Find("Score").GetComponent<score>().calculateScore(-1);
+
+        }
+        if (maCollision.gameObject.name == "armCollider")
+        {
+            print("touché arm");
+            transform.position = maCollision.transform.position;
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+            transform.GetChild(0).GetComponent<fireball>().explose = true;
+            // To Do Score +1
+            GameObject.Find("Score").GetComponent<score>().calculateScore(1);
 
         }
         if (maCollision.gameObject.name == "plane")

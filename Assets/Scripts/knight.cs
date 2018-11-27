@@ -13,16 +13,15 @@ public class knight : MonoBehaviour {
         // Moving knight to the left
         if (Input.GetKey(KeyCode.LeftArrow)){
 
-            transform.Translate(0.2f, 0, 0);
+            transform.Translate(0, 0, -0.2f);
 
         }
-
 
         // Moving knight to the rignt
         if (Input.GetKey(KeyCode.RightArrow))
         {
 
-            transform.Translate(-0.2f, 0, 0);
+            transform.Translate(0, 0, 0.2f);
 
         }
 
@@ -31,7 +30,7 @@ public class knight : MonoBehaviour {
         if (Input.GetKey(KeyCode.UpArrow) && transform.position.x > 8)
         {
 
-            transform.Translate(0, 0, -0.2f);
+            transform.Translate(-0.2f, 0, 0);
 
         }
 
@@ -40,7 +39,7 @@ public class knight : MonoBehaviour {
         if (Input.GetKey(KeyCode.DownArrow) && transform.position.x < 11)
         {
 
-            transform.Translate(0, 0, 0.2f);
+            transform.Translate(0.2f, 0, 0);
 
         }
 
@@ -50,25 +49,11 @@ public class knight : MonoBehaviour {
         {
             print("Key J");
             //transform.Translate(0, 0.4f, 0);
-            gameObject.GetComponent<Rigidbody>().AddForce(1f, 100f, 1f);
+            gameObject.GetComponent<Rigidbody>().AddForce(-50f, 500f, 0f);
 
         }
 
 	}
 
-    void OnCollisionEnter(Collision maCollision)
-    {
-        if (maCollision.gameObject.name == "FireCollider(Clone)")
-        {
-            // fireBall explose
-            gameObject.GetComponent<Rigidbody>().AddForce(-1000, 0, 0);
-            GameObject.Find("FireCollider(Clone)").transform.GetChild(0).GetComponent<fireball>().explose = true;
-            // at least
-            // Destroy(GameObject.Find("FireCollider(Clone)"));
-            Destroy(maCollision.gameObject, 5);
-
-
-        }
-
-    }
+   
 }

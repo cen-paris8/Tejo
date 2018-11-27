@@ -11,3 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneDragon.unity
     guid: 69df784824f3c234186db650d9f9365d
+  - enabled: 1
+    path: Assets/Scenes/gameover.unity
+    guid: 9829f2c3e900ebe4a809978282b8ff6e
+  m_configObjects: {}

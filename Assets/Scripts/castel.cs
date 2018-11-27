@@ -4,14 +4,26 @@ using UnityEngine;
 
 public class castel : MonoBehaviour {
 
-    public bool isUp = false;
-	
-	// Update is called once per frame
-	void Update () {
-        if (isUp == true)
+    private MeshRenderer m;
+
+    public bool isUp()
+    {
+        m = GetComponent<MeshRenderer>();
+        return m.enabled;
+        
+    }
+
+    public void changeRenderer(bool flag)
+    {
+        m = GetComponent<MeshRenderer>();
+        if (flag)
         {
-            MeshRenderer m = GetComponent<MeshRenderer>();
             m.enabled = true;
         }
+        else
+        {
+            m.enabled = false;
+        }
     }
+
 }

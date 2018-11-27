@@ -4,30 +4,17 @@ using UnityEngine;
 
 public class arms : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
     void OnCollisionEnter(Collision maCollision)
     {
-        print("knight maCollision.gameObject.name : " + maCollision.gameObject.name);
+        print("collision avec : " + maCollision.gameObject.name);
         if (maCollision.gameObject.name == "FireCollider(Clone)")
         {
-            print("j'y suis ");
+            print("touché");
             // fireBall explose
-            gameObject.GetComponent<Rigidbody>().AddForce(-1000, 0, 0);
-            GameObject.Find("FireCollider(Clone)").transform.GetChild(0).GetComponent<fireball>().explose = true;
-            //currentFireball = GameObject.Find("FireCollider(Clone)");
-            //currentFireball.transform.GetChild(0).GetComponent<fireball>().explose = true;
-            // maCollision.transform.GetChild(0).GetComponent<fireball>().explose = true;
-            // at least
-            Destroy(GameObject.Find("FireCollider(Clone)"));
-
+            //gameObject.GetComponent<Rigidbody>().AddForce(-1000, 0, 0);
+            maCollision.transform.GetChild(0).GetComponent<fireball>().explose = true;
+            // To Do Score +1
+            GameObject.Find("Score").GetComponent<score>().calculateScore(+1);
 
         }
 
