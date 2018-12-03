@@ -17,15 +17,12 @@ public class shoot : MonoBehaviour {
     // Use to define fireball speed
     float speed =  4;// 10; //
     float startTime;
-    Vector3 sup;
     public ConstantForce forceBallDirection;
-    private Transform fireChild;
 
 
     // Use this for initialization
     void Start () {
         startTime = Time.time;
-        fireChild = transform.GetChild(0);
     }
 
     // Use this for initialization
@@ -48,8 +45,7 @@ public class shoot : MonoBehaviour {
         if (Time.time - startTime > 3)
         {
             // Define fireball direction
-            sup = new Vector3(0, -1, -1);
-            Vector3 direction = (castel.position - transform.position); // + sup
+            Vector3 direction = (castel.position - transform.position);
             direction = direction.normalized;
             forceBallDirection.force = direction * speed;
             //transform.position += direction * speed;
@@ -65,6 +61,7 @@ public class shoot : MonoBehaviour {
     /// </summary>
     void OnCollisionEnter(Collision maCollision)
     {
+        print("maCollision.gameObject.name : " + maCollision.gameObject.name);
         if (maCollision.gameObject.name == "CastelCollider")
         {
             AudioSource source = GetComponent<AudioSource>();
@@ -75,15 +72,24 @@ public class shoot : MonoBehaviour {
             GameObject.Find("Score").GetComponent<score>().calculateScore(-1);
 
         }
-        if (maCollision.gameObject.name == "Knights")
+        if (maCollision.gameObject.name == "armCollider")
         {
             print("touché arm");
             // transform.position = maCollision.transform.position;
             GetComponent<Rigidbody>().velocity = Vector3.zero;
             transform.GetChild(0).GetComponent<fireball>().explosionTime = 0.5f;
             transform.GetChild(0).GetComponent<fireball>().explose = true;
-            // To Do Score +1
-            // GameObject.Find("Score").GetComponent<score>().calculateScore(1);
+            maCollision.rigidbody.velocity = Vector3.zero;
+
+        }
+        if (maCollision.gameObject.name == "Knights")
+        {
+            print("touché Knight");
+            // transform.position = maCollision.transform.position;
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+            transform.GetChild(0).GetComponent<fireball>().explosionTime = 0.5f;
+            transform.GetChild(0).GetComponent<fireball>().explose = true;
+            maCollision.rigidbody.velocity = Vector3.zero;
 
         }
         if (maCollision.gameObject.name == "plane")
@@ -97,7 +103,6 @@ public class shoot : MonoBehaviour {
     /// </summary>
     public void destroyFireball()
     {
-        print("destroy");
             Destroy(gameObject);
 
     }

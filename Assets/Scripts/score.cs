@@ -15,7 +15,6 @@ public class score : MonoBehaviour {
     {
         
         total = (int) transform.GetChild(0).GetChild(0).GetComponent<Slider>().value + point;
-        print("score " + total);
         // To do prog. bar
         transform.GetChild(0).GetChild(0).GetComponent<Slider>().value = total;
 

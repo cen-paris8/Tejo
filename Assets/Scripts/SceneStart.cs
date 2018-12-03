@@ -6,8 +6,8 @@ public class SceneStart : MonoBehaviour
 {
     private void Start()
     {
-        AudioSource source = GetComponent<AudioSource>();
-        source.Play();
+       // AudioSource source = GetComponent<AudioSource>();
+       // source.Play();
     }
 
     public void ChangeScene(string scenename)

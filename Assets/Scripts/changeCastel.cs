@@ -7,19 +7,24 @@ public class changeCastel : MonoBehaviour {
     public castel[] etatCastel;
     private castel CastelNum;
     private castel CastelNext;
+    //public bool IsSmoke = false;
 
     /// <summary>
     /// function to change renderer when castel hit
     /// </summary>
     public void manageCastels()
     {
-        print("changeCastel");
         for (var i = 0; i < etatCastel.Length; i++)
         {
             CastelNum = etatCastel[i].GetComponent<castel>();
 
             if (CastelNum.isUp() == true)
             {
+                /*if (i >= 1)
+                {
+                    IsSmoke = true;
+                }
+                */
                 if (i >= 2)
                 {
                     // Go To Game Over
@@ -30,8 +35,7 @@ public class changeCastel : MonoBehaviour {
                 CastelNext = etatCastel[i + 1].GetComponent<castel>();
                 CastelNext.changeRenderer(true);
                 return;
-                
-                
+
             }
             
         }

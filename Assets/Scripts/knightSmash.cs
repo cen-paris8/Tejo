@@ -16,7 +16,7 @@ public class knightSmash : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space))
         {
 
-            transform.Rotate(0, 0, 50); // Sword up
+            transform.Rotate(0, -10, 0); // Sword up
             AudioSource source = GetComponent<AudioSource>();
             source.Play();
         }
@@ -24,7 +24,7 @@ public class knightSmash : MonoBehaviour {
         if (Input.GetKeyUp(KeyCode.Space))
         {
 
-            transform.Rotate(0, 0, -50); // Sword down again
+            transform.Rotate(0, 10, 0); // Sword down again
         }
     }
 }

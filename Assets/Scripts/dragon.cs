@@ -18,7 +18,7 @@ public class dragon : MonoBehaviour {
     // Jsut use to wait 5s before start
     private int StartTime = 5;
     // Knight win 
-    private float gameDuring = 70;
+    private float gameDuring = 30;
     private float startGame;
 
     public Transform colliderFire;

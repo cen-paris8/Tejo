@@ -6,12 +6,14 @@ public class knight : MonoBehaviour {
 
     //private fireball newFireball;
     GameObject currentFireball;
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
 
         // Moving knight to the left
-        if (Input.GetKey(KeyCode.LeftArrow)){
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
 
             transform.Translate(0, 0, -0.2f);
 
@@ -44,16 +46,11 @@ public class knight : MonoBehaviour {
         }
 
 
-        // To Jump
-        if (Input.GetKey(KeyCode.J)) //RightCommand
+        // To jump :
+        if (Input.GetKey(KeyCode.RightAlt))
         {
-            print("Key J");
-            //transform.Translate(0, 0.4f, 0);
-            gameObject.GetComponent<Rigidbody>().AddForce(-50f, 500f, 0f);
 
+            transform.Translate(0, 0.4f, 0);
         }
-
-	}
-
-   
+    }
 }
