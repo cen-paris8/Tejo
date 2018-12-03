@@ -50,7 +50,7 @@ public class knight : MonoBehaviour {
         if (Input.GetKey(KeyCode.RightAlt))
         {
 
-            transform.Translate(0, 0.4f, 0);
+            //transform.Translate(0, 0.4f, 0);
         }
     }
 }
