@@ -1,3 +1,18 @@
+## Demo Game :
+https://cen-paris8.github.io/Tejo/
+
+***
+
+Pour jouer :
+
+* Déplacement Droite : Right  
+* Déplacement Gauche : Left  
+* Déplacement Derriere : Up
+* Déplacement Devant : Down
+* Coup d'épée : Space
+
+***
+
 Duration => 15
 
 Looping v
@@ -9,7 +24,7 @@ Flip Rotation => 0
 
 
 Emission
-	Rate over Time => 40 // nb de particule �mises
+	Rate over Time => 40 // nb de particule émises
 
 Particle System 
 	Start Color => rouge jaune marron jaune
@@ -19,4 +34,4 @@ Align TO Direction => v
 
 
 Echelle pour la boule de feur :
-0.5 (Dragon) � 0.05 (chateau)
+0.5 (Dragon) à 0.05 (chateau)
