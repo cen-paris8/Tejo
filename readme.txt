@@ -12,7 +12,7 @@ Pour jouer :
 * Coup d'épée : Space
 
 ***
-
+Config.
 Duration => 15
 
 Looping v
