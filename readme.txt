@@ -1,5 +1,5 @@
 ## Demo Game :
-https://cen-paris8.github.io/Tejo/
+https://cen-paris8.github.io/unity-Tejo/
 
 ***
 
